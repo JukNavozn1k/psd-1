@@ -62,15 +62,15 @@ public class SmallIntegerTest {
 
     @Test
     void testOutOfRangeOnAddition() {
-        SmallInteger a = new SmallInteger(100);
-        SmallInteger b = new SmallInteger(10);
+        SmallInteger a = new SmallInteger(10000);
+        SmallInteger b = new SmallInteger(1);
         assertThrows(SmallInteger.SmallIntegerOutOfRangeException.class, () -> a.add(b));
     }
 
     @Test
     void testOutOfRangeOnMultiplication() {
-        SmallInteger a = new SmallInteger(50);
-        SmallInteger b = new SmallInteger(3);
+        SmallInteger a = new SmallInteger(1000);
+        SmallInteger b = new SmallInteger(11);
         assertThrows(SmallInteger.SmallIntegerOutOfRangeException.class, () -> a.multiply(b));
     }    
 }
