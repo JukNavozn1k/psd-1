@@ -56,8 +56,8 @@ public class SmallIntegerTest {
 
     @Test
     void testOutOfRangeException() {
-        assertThrows(SmallInteger.SmallIntegerOutOfRangeException.class, () -> new SmallInteger(105));
-        assertThrows(SmallInteger.SmallIntegerOutOfRangeException.class, () -> new SmallInteger(-105));
+        assertThrows(SmallInteger.SmallIntegerOutOfRangeException.class, () -> new SmallInteger(10001));
+        assertThrows(SmallInteger.SmallIntegerOutOfRangeException.class, () -> new SmallInteger(-10001));
     }
 
     @Test

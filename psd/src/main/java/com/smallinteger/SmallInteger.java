@@ -1,8 +1,8 @@
 package com.smallinteger;
 
 public class SmallInteger {
-    private static final int MIN_VALUE = -104;
-    private static final int MAX_VALUE = 104;
+    private static final int MIN_VALUE = -10000;
+    private static final int MAX_VALUE = 10000;
     private final int value;
 
     // Исключение при выходе за границы допустимых значений
