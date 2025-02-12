@@ -5,7 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SmallIntegerCalculator {
-    private static final Pattern TOKEN_PATTERN = Pattern.compile("\\s*([()*/%]|-?\\d+|[-+])\\s*");
+    private static final Pattern TOKEN_PATTERN = Pattern.compile("\\s*([()*/%]|-?\\d+|[-+])\\s*"); // Шаблон для выражения
+private static final String VALID_TOKENS = "0123456789()+-*/%"; // Разрешённые символы
     private static int pos;
     private static String[] tokens;
 
@@ -13,6 +14,7 @@ public class SmallIntegerCalculator {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter an expression (e.g., (5 + 3) * 2):");
 
+        // Цикл ввода и обработки выражений
         while (true) {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
@@ -48,6 +50,14 @@ public class SmallIntegerCalculator {
     }
 
     private static SmallInteger evaluateExpression(String input) {
+        // Проверка на наличие недопустимых символов до того, как начинаем разбор
+        for (char c : input.toCharArray()) {
+            if (VALID_TOKENS.indexOf(c) == -1 && !Character.isWhitespace(c)) {
+                throw new IllegalArgumentException("Invalid character: " + c);
+            }
+        }
+    
+        // Разбор токенов
         Matcher matcher = TOKEN_PATTERN.matcher(input);
         StringBuilder parsedInput = new StringBuilder();
         while (matcher.find()) {
@@ -57,7 +67,6 @@ public class SmallIntegerCalculator {
         pos = 0;
         return parseExpression();
     }
-
     private static SmallInteger parseExpression() {
         SmallInteger result = parseTerm();
         while (pos < tokens.length && (tokens[pos].equals("+") || tokens[pos].equals("-"))) {
