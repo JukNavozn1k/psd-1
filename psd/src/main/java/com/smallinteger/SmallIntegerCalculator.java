@@ -16,12 +16,26 @@ public class SmallIntegerCalculator {
         while (true) {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
-
+        
+            if (input.equalsIgnoreCase("cls") || input.equalsIgnoreCase("clear")) {       
+                String os = System.getProperty("os.name").toLowerCase();
+                try {
+                    if (os.contains("win")) {
+                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                    } else {
+                        new ProcessBuilder("clear").inheritIO().start().waitFor();
+                    }
+                } catch (Exception e) {
+                    System.out.println("Ошибка при очистке экрана: " + e.getMessage());
+                }
+                continue;  
+            }
+        
             if (input.equalsIgnoreCase("exit")) {
                 System.out.println("Exiting...");
                 break;
             }
-
+        
             try {
                 SmallInteger result = evaluateExpression(input);
                 System.out.println("Result: " + result);
