@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class SmallIntegerCalculator {
     private static final Pattern TOKEN_PATTERN = Pattern.compile("\\s*([()*/%]|-?\\d+|[-+])\\s*"); // Шаблон для выражения
-private static final String VALID_TOKENS = "0123456789()+-*/%"; // Разрешённые символы
+    private static final String VALID_TOKENS = "0123456789()+-*/%"; // Разрешённые символы
     private static int pos;
     private static String[] tokens;
 
