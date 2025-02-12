@@ -31,7 +31,7 @@
             <configuration>
                 <archive>
                     <manifest>
-                        <mainClass>com.smallinteger.Main</mainClass>
+                        <mainClass>com.smallinteger.SmallIntegerCalculator</mainClass>
                     </manifest>
                 </archive>
             </configuration>
